@@ -69,7 +69,15 @@ class TheMatrixMovieFactory(MovieFactory):
     name = "The Matrix"
     actor1 = factory.RelatedFactory(
         factory=CharacterFactory,
+        # must contain the name of ForeignKey that points
+        # to the same model of the class factory point.
+        # In this case, the factory is MovieFactory, and the model is
+        # core.Movie
         factory_related_name="movie",
+        # this is an attribute of intermediate table
+        # attributes of related tables can also
+        # be defined using the syntax double underscore syntax.
+        # accessing attributes by related_name's is not supported.
         name="Neo",
         actor__name="Keanu Reeves",
         actor__birthplace__name="Lebanon",
@@ -112,6 +120,7 @@ class TheMatrixMovieFactory(MovieFactory):
         name="Cypher",
         actor__name="Joe Pantoliano",
         actor__birthplace__name="USA",
+        # None in a ForeignKey attribute make factory_boy not generate the value
         contract=None
     )
     script = factory.SubFactory(ScriptFactory)
