@@ -14,7 +14,7 @@ def country():
 
 @pytest.fixture
 def matrix_script():
-    return factories.TheMatrixSeriesScript()
+    return factories.TheMatrixSeriesScriptFactory()
 
 
 @pytest.mark.django_db

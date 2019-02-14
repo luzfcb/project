@@ -99,6 +99,10 @@ class TheMatrixMovieFactory(MovieFactory):
         name="Trinity",
         actor__name="Carrie-Anne Moss",
         actor__birthplace__name="Canada",
+        # Any field that not explicitly defined will
+        # be generated automatically.
+        # in this case, the a core.Contract instance
+        # will be generated to contract field.
     )
     actor4 = factory.RelatedFactory(
         factory=CharacterFactory,
@@ -130,7 +134,7 @@ class TheMatrix2MovieFactory(TheMatrixMovieFactory):
     name = "The Matrix 2"
 
 
-class TheMatrixSeriesScript(ScriptFactory):
+class TheMatrixSeriesScriptFactory(ScriptFactory):
     name = "The Matrix Series"
     movie1 = factory.RelatedFactory(
         factory=TheMatrixMovieFactory,
